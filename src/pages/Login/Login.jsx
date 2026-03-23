@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout, setCredentials } from "../../features/auth/authSlice";
 function Login(){
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handlePasswordChange = (event) => {
         setPassword(event.target.value)
@@ -33,10 +37,12 @@ function Login(){
             if(response.ok){
                 console.log("Login successfull! Here is the user data: ", data);
 
-                localStorage.setItem("hrm_token", data.token)
-
-                const myToken = localStorage.getItem("hrm_token");
-                // TODO: Here is where you will eventually save the token to Redux/LocalStorage!
+                localStorage.setItem("hrm_token", data.accessToken)
+                
+                dispatch(setCredentials({
+                    token: data.accessToken,
+                    user: data
+                }));
 
                 navigate("/courses")
             }
@@ -50,8 +56,6 @@ function Login(){
                 // TODO: Set an error state saying "Could not connect to server"
             }
 
-
-    
     }
     return (
         <form onSubmit={handleLoginSubmit}>
@@ -69,6 +73,7 @@ function Login(){
             />
             
             <button type="submit">Login</button>
+            
             
         </form>
     );

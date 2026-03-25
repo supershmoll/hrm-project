@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchCourses } from '../../features/courses/coursesSlice';
+import Search from '../../components/Search/Search';
+import CourseCard from '../../components/CourseCard/CourseCard';
+import { useDebounce } from '../../hooks/useDebounce';
 
 const Courses = () => {
   const dispatch = useDispatch();
@@ -9,6 +12,12 @@ const Courses = () => {
   const { items, status, error } = useSelector((state) => state.courses);
 
   const [searchTerm, setSearchTerm] = useState('');
+  const debouncedTerm = useDebounce(searchTerm, 500);
+
+  const filteredCourses = items.filter((course) => {
+    if (!course.title) return false;
+    return course.title.toLowerCase().includes(debouncedTerm.toLowerCase());
+  });
 
   useEffect(() => {
     if (status === 'idle') {
@@ -24,21 +33,15 @@ const Courses = () => {
     return <div style={{ color: 'red' }}>Error: {error}</div>;
   }
 
-  const filteredCourses = items.filter((course) => {
-    return course.title.toLowerCase().includes(searchTerm.toLowerCase());
-  });
-
   return (
     <div className="courses-container">
       <h2>Courses</h2>
 
-      <div style={{ marginBottom: '20px' }}>
-        <input
-          type="text"
-          placeholder="Search by course name..."
+      <div style={{ display: 'flex', gap: '15px' }}>
+        <Search
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ padding: '8px', width: '300px', borderRadius: '4px' }}
+          onChange={setSearchTerm}
+          placeholder="Search course name..."
         />
       </div>
 
@@ -46,27 +49,7 @@ const Courses = () => {
 
       <div className="courses-list">
         {filteredCourses.map((course) => (
-          <div key={course.id} style={cardStyle}>
-            <div>
-              <h4>{course.title}</h4>
-              <small>{course.type}</small>
-            </div>
-
-            <div>
-              <p>Category</p>
-              <strong>{course.category}</strong>
-            </div>
-
-            <div>
-              <p>Number of students</p>
-              <strong>{course.studentsCount}</strong>
-            </div>
-
-            <div>
-              <p>Passed education</p>
-              <strong>{course.passedCount}</strong>
-            </div>
-          </div>
+          <CourseCard key={course.id} course={course} />
         ))}
       </div>
     </div>

@@ -1,0 +1,156 @@
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fafafa;
+  width: 100%;
+}
+
+.loginContainer {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+
+.tab {
+  font-size: 14px;
+  font-weight: 600;
+  color: #999999;
+  background: none;
+  border: none;
+  padding-bottom: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.activeTab {
+  color: #c0392b;
+  border-bottom: 2px solid #c0392b;
+}
+
+.headerText {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 12px 0;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666666;
+  margin: 0;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputGroup {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  height: 52px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 0 16px;
+  font-size: 15px;
+  color: #1a1a1a;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #c0392b;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #999999;
+}
+
+.eyeButton {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.eyeButton:hover {
+  color: #666666;
+}
+
+.loginButton {
+  width: 100%;
+  height: 52px;
+  background-color: #c0392b;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 26px;
+  margin-top: 24px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+}
+
+.loginButton:hover {
+  background-color: #a93226;
+}
+
+.loginButton:active {
+  transform: scale(0.98);
+}
+
+.forgotPassword {
+  margin-top: 32px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #999999;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.forgotPassword:hover {
+  color: #666666;
+}

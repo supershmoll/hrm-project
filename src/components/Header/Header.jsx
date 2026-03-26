@@ -1,6 +1,6 @@
 import Search from '../Search/Search';
 import arrowDownIcon from '../../assets/logo/downArrow.svg';
-import InnowiseLogo from '../../assets/logo/Innowiselogo.png';
+import InnowiseLogo from '../../assets/logo/InnowiseLogo.png';
 import notification from '../../assets/logo/notification.svg';
 import avatar from '../../assets/logo/avatar.png';
 import styles from './Header.module.css';

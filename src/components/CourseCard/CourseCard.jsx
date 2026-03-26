@@ -1,40 +1,62 @@
-const cardStyle = {
-  border: '1px solid #ddd',
-  padding: '16px',
-  marginBottom: '10px',
-  borderRadius: '8px',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-};
+import styles from './CourseCard.module.css';
 
-const labelStyle = {
-  margin: 0,
-  fontSize: '12px',
-  color: '#888',
-};
+const MAX_VISIBLE_AVATARS = 3;
 
 const CourseCard = ({ course }) => {
+  const visibleAvatars = course.avatars?.slice(0, MAX_VISIBLE_AVATARS) ?? [];
+  const extraCount = (course.avatars?.length ?? 0) - MAX_VISIBLE_AVATARS;
+
   return (
-    <div style={cardStyle}>
-      <div>
-        <h4 style={{ margin: '0 0 5px 0' }}>{course.title}</h4>
-        <small style={{ color: '#888' }}>{course.type}</small>
+    <div className={styles.card}>
+      <div className={styles.iconWrapper}>
+        <svg
+          className={styles.icon}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
       </div>
 
-      <div style={{ textAlign: 'center' }}>
-        <p style={labelStyle}>Category</p>
-        <strong>{course.category}</strong>
+      <div className={styles.titleBlock}>
+        <h4 className={styles.title}>{course.title}</h4>
+        <span className={styles.type}>{course.type}</span>
       </div>
 
-      <div style={{ textAlign: 'center' }}>
-        <p style={labelStyle}>Number of Students</p>
-        <strong>{course.studentsCount || 'Unknown'}</strong>
+      <div className={styles.statBlock}>
+        <p className={styles.statLabel}>Category</p>
+        <span className={styles.statValue}>{course.category}</span>
       </div>
 
-      <div style={{ textAlign: 'center' }}>
-        <p style={labelStyle}>Passed education</p>
-        <strong>{course.passedCount || 'Unknown'}</strong>
+      <div className={styles.statBlock}>
+        <p className={styles.statLabel}>Number of Students</p>
+        <span className={styles.statValue}>
+          {course.studentsCount ?? 'Unknown'}
+        </span>
+      </div>
+
+      <div className={styles.statBlock}>
+        <p className={styles.statLabel}>Passed education</p>
+        <span className={styles.statValue}>
+          {course.passedCount ?? 'Unknown'}
+        </span>
+      </div>
+
+      <div className={styles.avatars}>
+        {visibleAvatars.map((url, i) => (
+          <img
+            key={i}
+            src={url}
+            alt="student avatar"
+            className={styles.avatar}
+          />
+        ))}
+        {extraCount > 0 && (
+          <div className={styles.avatarExtra}>+{extraCount}</div>
+        )}
       </div>
     </div>
   );

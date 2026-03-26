@@ -32,8 +32,8 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: {
-                namedExport: false, // ← add this
-                exportLocalsConvention: 'camelCase', // ← add this
+                namedExport: false,
+                exportLocalsConvention: 'camelCase',
                 localIdentName: '[name]__[local]__[hash:base64:5]',
               },
             },
@@ -44,6 +44,10 @@ module.exports = {
         test: /\.css$/,
         exclude: /\.module\.css$/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/resource',
       },
     ],
   },

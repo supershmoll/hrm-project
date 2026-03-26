@@ -1,17 +1,29 @@
 .card {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   gap: 24px;
-  border: 1px solid #f0f0f0;
+  border: 1px solid #eaeaea;
   border-radius: 12px;
   padding: 18px 24px;
   margin-bottom: 12px;
   background: #fff;
   transition: box-shadow 0.2s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .card:hover {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+.infoSection {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  min-width: 250px;
 }
 
 .iconWrapper {
@@ -28,16 +40,17 @@
 .icon {
   width: 22px;
   height: 22px;
-  color: #c0392b;
 }
 
 .titleBlock {
-  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   min-width: 0;
 }
 
 .title {
-  margin: 0 0 4px 0;
+  margin: 0;
   font-size: 15px;
   font-weight: 600;
   color: #1a1a1a;
@@ -47,31 +60,51 @@
 }
 
 .type {
+  margin: 0;
   font-size: 13px;
   color: #999;
 }
 
+.statsSection {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
 .statBlock {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   text-align: center;
+  width: 130px;
 }
 
 .statLabel {
-  margin: 0 0 2px 0;
+  margin: 0;
   font-size: 12px;
   color: #999;
+  white-space: nowrap;
 }
 
 .statValue {
-  font-size: 15px;
-  font-weight: 700;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
   color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .avatars {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  justify-content: flex-end;
+  width: 80px;
 }
 
 .avatar {
@@ -100,4 +133,26 @@
   font-size: 11px;
   font-weight: 600;
   color: #666;
+}
+
+@media (max-width: 850px) {
+  .statsSection {
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px dashed #eaeaea;
+  }
+}
+
+@media (max-width: 550px) {
+  .statBlock {
+    width: 45%;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .avatars {
+    width: 45%;
+    justify-content: flex-start;
+  }
 }

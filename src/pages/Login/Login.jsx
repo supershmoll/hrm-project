@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logout, setCredentials } from '../../features/auth/authSlice';
+import { setCredentials } from '../../features/auth/authSlice';
+import styles from './Login.module.css';
+
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -17,6 +20,10 @@ function Login() {
     setUsername(event.target.value);
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
 
@@ -27,15 +34,13 @@ function Login() {
         body: JSON.stringify({
           username: username,
           password: password,
-          expiersInMins: 60,
+          expiresInMins: 60,
         }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        console.log('Login successfull! Here is the user data: ', data);
-
         localStorage.setItem('hrm_token', data.accessToken);
 
         dispatch(
@@ -46,32 +51,78 @@ function Login() {
         );
 
         navigate('/courses');
-      } else {
-        console.log('Login failed:', data.message);
-        // TODO: Set your React error state so the user sees "Invalid credentials"
       }
     } catch (error) {
-      console.error('Network error. Is your Internet down?', error);
-      // TODO: Set an error state saying "Could not connect to server"
+      console.error(error);
     }
   };
-  return (
-    <form onSubmit={handleLoginSubmit}>
-      <input
-        type="text"
-        value={username}
-        onChange={handleUsernameChange}
-        placeholder="username"
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={handlePasswordChange}
-        placeholder="password"
-      />
 
-      <button type="submit">Login</button>
-    </form>
+  return (
+    <div className={styles.pageContainer}>
+      <div className={styles.loginContainer}>
+        <div className={styles.tabs}>
+          <button className={`${styles.tab} ${styles.activeTab}`}>
+            LOG IN
+          </button>
+          <button className={styles.tab}>SIGN UP</button>
+        </div>
+
+        <div className={styles.headerText}>
+          <h1 className={styles.title}>Welcome back</h1>
+          <p className={styles.subtitle}>Hello again! Log in to continue</p>
+        </div>
+
+        <form onSubmit={handleLoginSubmit} className={styles.form}>
+          <div className={styles.inputGroup}>
+            <input
+              type="text"
+              value={username}
+              onChange={handleUsernameChange}
+              placeholder="Username"
+              className={styles.input}
+            />
+          </div>
+
+          <div className={styles.inputGroup}>
+            <input
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={handlePasswordChange}
+              placeholder="Password"
+              className={styles.input}
+            />
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className={styles.eyeButton}
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+
+          <button type="submit" className={styles.loginButton}>
+            LOG IN
+          </button>
+        </form>
+
+        <button type="button" className={styles.forgotPassword}>
+          FORGOT PASSWORD
+        </button>
+      </div>
+    </div>
   );
 }
+
 export default Login;

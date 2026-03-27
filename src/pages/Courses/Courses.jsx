@@ -10,8 +10,9 @@ import Search from '../../components/Search/Search';
 import styles from './Courses.module.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Header from '../../components/Header/Header';
+import { API_BASE_URL } from '../../constants/api';
 
-const COURSES_API_URL = 'https://dummyjson.com/c/011a-bf3a-4314-b8b8';
+const COURSES_API_URL = `${API_BASE_URL}/c/011a-bf3a-4314-b8b8`;
 
 const Courses = () => {
   const dispatch = useDispatch();

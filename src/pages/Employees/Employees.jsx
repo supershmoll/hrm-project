@@ -6,8 +6,9 @@ import { useFilteredEmployees } from '../../hooks/useFilteredEmployees';
 import EmployeesFilter from '../../components/EmployeesFilter/EmployeesFilter';
 import EmployeesTable from '../../components/EmployeesTable/EmployeesTable';
 import styles from './Employees.module.css';
+import { API_BASE_URL } from '../../constants/api';
 
-const EMPLOYEES_API_URL = 'https://dummyjson.com/c/4890-50ca-45a8-88e7';
+const EMPLOYEES_API_URL = `${API_BASE_URL}/c/4890-50ca-45a8-88e7`;
 
 const Employees = () => {
   const dispatch = useDispatch();

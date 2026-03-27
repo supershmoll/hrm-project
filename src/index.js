@@ -5,6 +5,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
+import './styles/variables.css';
 import '@fontsource/manrope';
 
 const container = document.getElementById('root');

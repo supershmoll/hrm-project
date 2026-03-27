@@ -1,61 +1,18 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setCredentials } from '../../features/auth/authSlice';
+import useLogin from '../../hooks/useLogin';
 import styles from './Login.module.css';
 
 function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleLoginSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const response = await fetch('https://dummyjson.com/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-          expiresInMins: 60,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        localStorage.setItem('hrm_token', data.accessToken);
-
-        dispatch(
-          setCredentials({
-            token: data.accessToken,
-            user: data,
-          })
-        );
-
-        navigate('/courses');
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const {
+    username,
+    password,
+    showPassword,
+    isLoading,
+    error,
+    handleUsernameChange,
+    handlePasswordChange,
+    togglePasswordVisibility,
+    handleLoginSubmit,
+  } = useLogin();
 
   return (
     <div className={styles.pageContainer}>
@@ -66,6 +23,8 @@ function Login() {
         </div>
 
         <form onSubmit={handleLoginSubmit} className={styles.form}>
+          {error && <p className={styles.error}>{error}</p>}
+
           <div className={styles.inputGroup}>
             <input
               type="text"
@@ -105,8 +64,12 @@ function Login() {
             </button>
           </div>
 
-          <button type="submit" className={styles.loginButton}>
-            LOG IN
+          <button
+            type="submit"
+            className={styles.loginButton}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Logging in...' : 'LOG IN'}
           </button>
         </form>
       </div>

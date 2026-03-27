@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../features/auth/authSlice';
 import styles from './Sidebar.module.css';
+import { PATHS } from '../../routes/paths';
 
 import userIcon from '../../assets/logo/u_user.svg';
 import employeesIcon from '../../assets/logo/u_list-ul.svg';
@@ -14,7 +15,7 @@ const Sidebar = () => {
   const handleLogout = () => {
     localStorage.removeItem('hrm-token');
     dispatch(logout());
-    navigate('/');
+    navigate(PATHS.HOME);
   };
 
   const getNavClass = ({ isActive }) =>
@@ -34,11 +35,11 @@ const Sidebar = () => {
         </div>
         <div className={styles.divider} />
 
-        <NavLink to="/employees" className={getNavClass} title="Employees">
+        <NavLink to={PATHS.EMPLOYEES} className={getNavClass} title="Employees">
           <img src={employeesIcon} alt="Employees" className={styles.icon} />
         </NavLink>
 
-        <NavLink to="/courses" className={getNavClass} title="Courses">
+        <NavLink to={PATHS.COURSES} className={getNavClass} title="Courses">
           <img src={clipboardIcon} alt="Courses" className={styles.icon} />
         </NavLink>
       </div>

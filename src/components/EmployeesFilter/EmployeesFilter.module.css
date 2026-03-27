@@ -17,7 +17,7 @@
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: #999;
+  color: var(--color-text-muted);
   width: 16px;
   height: 16px;
 }
@@ -28,13 +28,13 @@
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   font-size: 14px;
-  color: #333;
+  color: var(--color-text-secondary);
   outline: none;
   box-sizing: border-box;
 }
 
 .searchInput:focus {
-  border-color: #c0392b;
+  border-color: var(--color-primary);
 }
 
 .exportBtn {
@@ -44,7 +44,7 @@
   gap: 6px;
   background: none;
   border: none;
-  color: #c0392b;
+  color: var(--color-primary);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -67,19 +67,19 @@
   padding: 10px 36px 10px 14px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: var(--color-bg-primary);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
   font-size: 14px;
-  color: #333;
+  color: var(--color-text-secondary);
   cursor: pointer;
   min-width: 200px;
   outline: none;
 }
 
 .select:focus {
-  border-color: #c0392b;
+  border-color: var(--color-primary);
 }
 
 .moreBtn {
@@ -89,21 +89,21 @@
   padding: 10px 16px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  background: #fff;
+  background: var(--color-bg-primary);
   font-size: 14px;
-  color: #333;
+  color: var(--color-text-secondary);
   cursor: pointer;
 }
 
 .moreBtn:hover {
-  border-color: #c0392b;
-  color: #c0392b;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .resetBtn {
   background: none;
   border: none;
-  color: #c0392b;
+  color: var(--color-primary);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -115,8 +115,8 @@
 }
 
 .applyBtn {
-  background-color: #c0392b;
-  color: #fff;
+  background-color: var(--color-primary);
+  color: var(--color-bg-primary);
   border: none;
   border-radius: 8px;
   padding: 10px 32px;
@@ -126,11 +126,11 @@
 }
 
 .applyBtn:hover {
-  background-color: #a93226;
+  background-color: var(--color-primary-hover);
 }
 
 .count {
   font-size: 14px;
-  color: #999;
+  color: var(--color-text-muted);
   margin: 8px 0 16px;
 }

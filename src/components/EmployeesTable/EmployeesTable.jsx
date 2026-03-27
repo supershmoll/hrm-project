@@ -1,4 +1,4 @@
-import EmployeeRow from './EmployeeRow';
+import EmployeeRow from '../EmployeesRow/EmployeeRow';
 import styles from './EmployeesTable.module.css';
 
 const COLUMNS = [

@@ -115,6 +115,6 @@
   .language,
   .userInfo,
   .profile .arrowIcon {
-    display: none !important;
+    display: none;
   }
 }

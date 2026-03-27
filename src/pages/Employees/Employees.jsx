@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchEmployees } from '../../features/employees/employeesSlice';
 import { useFilteredEmployees } from '../../hooks/useFilteredEmployees';
-import EmployeesFilter from './EmployeesFilter';
-import EmployeesTable from './EmployeesTable';
+import EmployeesFilter from '../../components/EmployeesFilter/EmployeesFilter';
+import EmployeesTable from '../../components/EmployeesTable/EmployeesTable';
 
 const EMPLOYEES_API_URL = 'https://dummyjson.com/c/4890-50ca-45a8-88e7';
 

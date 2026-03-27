@@ -60,13 +60,6 @@ function Login() {
   return (
     <div className={styles.pageContainer}>
       <div className={styles.loginContainer}>
-        <div className={styles.tabs}>
-          <button className={`${styles.tab} ${styles.activeTab}`}>
-            LOG IN
-          </button>
-          <button className={styles.tab}>SIGN UP</button>
-        </div>
-
         <div className={styles.headerText}>
           <h1 className={styles.title}>Welcome back</h1>
           <p className={styles.subtitle}>Hello again! Log in to continue</p>
@@ -116,10 +109,6 @@ function Login() {
             LOG IN
           </button>
         </form>
-
-        <button type="button" className={styles.forgotPassword}>
-          FORGOT PASSWORD
-        </button>
       </div>
     </div>
   );

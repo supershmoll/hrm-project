@@ -29,28 +29,30 @@ const Sort = ({
           </option>
         ))}
       </select>
+      <div className={styles.buttonWrapper}>
+        <button
+          className={`${styles.directionBtn} ${direction === 'asc' ? styles.active : ''}`}
+          onClick={() => onChangeDirection('asc')}
+        >
+          ↑ Asc
+        </button>
 
-      <button
-        className={`${styles.directionBtn} ${direction === 'asc' ? styles.active : ''}`}
-        onClick={() => onChangeDirection('asc')}
-      >
-        ↑ Asc
-      </button>
+        <button
+          className={`${styles.directionBtn} ${direction === 'desc' ? styles.active : ''}`}
+          onClick={() => onChangeDirection('desc')}
+        >
+          ↓ Desc
+        </button>
+      </div>
+      <div className={styles.divDivider}>
+        <button className={styles.resetBtn} onClick={onReset}>
+          Reset
+        </button>
 
-      <button
-        className={`${styles.directionBtn} ${direction === 'desc' ? styles.active : ''}`}
-        onClick={() => onChangeDirection('desc')}
-      >
-        ↓ Desc
-      </button>
-
-      <button className={styles.resetBtn} onClick={onReset}>
-        Reset
-      </button>
-
-      <button className={styles.applyBtn} onClick={onApply}>
-        Apply
-      </button>
+        <button className={styles.applyBtn} onClick={onApply}>
+          Apply
+        </button>
+      </div>
     </div>
   );
 };

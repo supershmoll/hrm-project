@@ -1,3 +1,5 @@
+import Header from '../Header/Header';
+import Sidebar from '../Sidebar/Sidebar';
 import styles from './EmployeesFilter.module.css';
 
 const EmployeesFilter = ({
@@ -32,22 +34,6 @@ const EmployeesFilter = ({
             onChange={(e) => onSearchChange(e.target.value)}
           />
         </div>
-
-        <button className={styles.exportBtn}>
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="17 8 12 3 7 8" />
-            <line x1="12" y1="3" x2="12" y2="15" />
-          </svg>
-          Export
-        </button>
       </div>
 
       <div className={styles.filterRow}>
@@ -63,8 +49,6 @@ const EmployeesFilter = ({
             </option>
           ))}
         </select>
-
-        <button className={styles.moreBtn}>More +</button>
 
         <button className={styles.resetBtn} onClick={onReset}>
           Reset

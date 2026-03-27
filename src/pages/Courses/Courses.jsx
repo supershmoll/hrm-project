@@ -8,6 +8,8 @@ import CoursesList from './CoursesList';
 import Sort from '../../components/Sort/Sort';
 import Search from '../../components/Search/Search';
 import styles from './Courses.module.css';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import Header from '../../components/Header/Header';
 
 const COURSES_API_URL = 'https://dummyjson.com/c/011a-bf3a-4314-b8b8';
 
@@ -38,23 +40,39 @@ const Courses = () => {
     return <div style={{ color: 'red' }}>Error: {error}</div>;
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.heading}>Courses</h2>
-      <Search
-        value={searchTerm}
-        onChange={setSearchTerm}
-        placeholder="Course name"
-      />
-      <Sort
-        value={pendingField}
-        direction={pendingDirection}
-        onChangeField={setPendingField}
-        onChangeDirection={setPendingDirection}
-        onApply={handleApply}
-        onReset={handleReset}
-      />
-      <CoursesList courses={sortedCourses} />
-    </div>
+    <>
+      <Header />
+      <Sidebar />
+
+      <div className={styles.mainContentContainer}>
+        <div className={styles.centeredContentBlock}>
+          <div className={styles.filterSection}>
+            <div className={styles.searchWrapper}>
+              <Search
+                value={searchTerm}
+                onChange={setSearchTerm}
+                placeholder="Course name"
+              />
+            </div>
+
+            <div className={styles.sortWrapper}>
+              <Sort
+                value={pendingField}
+                direction={pendingDirection}
+                onChangeField={setPendingField}
+                onChangeDirection={setPendingDirection}
+                onApply={handleApply}
+                onReset={handleReset}
+              />
+            </div>
+          </div>
+
+          <p className={styles.count}>{sortedCourses.length} courses found</p>
+
+          <CoursesList courses={sortedCourses} />
+        </div>
+      </div>
+    </>
   );
 };
 

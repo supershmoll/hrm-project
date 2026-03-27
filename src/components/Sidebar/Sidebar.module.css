@@ -1,21 +1,20 @@
 .sidebar {
   position: fixed;
   left: 0;
-  top: 0;
+  top: 80px;
   bottom: 0;
-  width: 88px;
+  width: 90px;
   background: #fff;
   border-right: 1px solid #f0f0f0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 79.67px;
-  padding-bottom: 93px;
+  padding-top: 24px;
+  padding-bottom: 24px;
   justify-content: space-between;
   z-index: 100;
   box-sizing: border-box;
 }
-
 .topSection {
   display: flex;
   flex-direction: column;
@@ -123,7 +122,6 @@
   border-color: #c63031;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .sidebar {
     width: 64px;

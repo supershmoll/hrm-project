@@ -1,12 +1,50 @@
-.container {
-  padding: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
+.mainContentContainer {
+  padding-top: 80px;
+  padding-left: 90px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-color: #fafafa;
 }
 
-.heading {
-  font-size: 22px;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 16px;
+.centeredContentBlock {
+  width: 100%;
+  max-width: 1200px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filterSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.searchWrapper {
+  max-width: 300px;
+  width: 100%;
+}
+
+.sortWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.count {
+  font-size: 14px;
+  color: #999;
+  margin: 8px 0 16px 0;
+}
+
+@media (max-width: 768px) {
+  .mainContentContainer {
+    padding-left: 0;
+    padding-bottom: 60px;
+  }
 }

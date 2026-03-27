@@ -12,23 +12,25 @@ const COLUMNS = [
 
 const EmployeesTable = ({ employees }) => {
   return (
-    <table className={styles.table}>
-      <thead>
-        <tr className={styles.headerRow}>
-          {COLUMNS.map((col) => (
-            <th key={col} className={styles.headerCell}>
-              {col}
-            </th>
+    <div className={styles.tableWrapper}>
+      <table className={styles.table}>
+        <thead>
+          <tr className={styles.headerRow}>
+            {COLUMNS.map((col) => (
+              <th key={col} className={styles.headerCell}>
+                {col}
+              </th>
+            ))}
+            <th className={styles.headerCell} />
+          </tr>
+        </thead>
+        <tbody>
+          {employees.map((employee) => (
+            <EmployeeRow key={employee.id} employee={employee} />
           ))}
-          <th className={styles.headerCell} />
-        </tr>
-      </thead>
-      <tbody>
-        {employees.map((employee) => (
-          <EmployeeRow key={employee.id} employee={employee} />
-        ))}
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   );
 };
 

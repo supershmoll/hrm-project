@@ -19,7 +19,6 @@ const CourseCard = ({ course }) => {
         </div>
       </div>
 
-      {/* RIGHT SECTION: Stats and Avatars */}
       <div className={styles.statsSection}>
         <div className={styles.statBlock}>
           <p className={styles.statLabel}>Category</p>

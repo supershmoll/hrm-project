@@ -1,0 +1,21 @@
+.search {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  color: #1a1a1a;
+  width: 100%;
+  font-family: inherit;
+}
+
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  padding: 16px 9px;
+  box-sizing: border-box;
+  max-width: 300px;
+  border-radius: 6px;
+  border-width: 0px;
+  background-color: #f6f6f6;
+  gap: 8px;
+}

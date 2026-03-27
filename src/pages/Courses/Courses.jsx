@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCourses } from '../../features/courses/coursesSlice';
 import { useFilteredCourses } from '../../hooks/useFilteredCourses';
 import { useSortedCourses } from '../../hooks/useSortedCourses';
-import CoursesList from './CoursesList';
+import CoursesList from '../../components/CoursesList/CoursesList';
 import Sort from '../../components/Sort/Sort';
 import Search from '../../components/Search/Search';
 import styles from './Courses.module.css';
@@ -41,9 +41,6 @@ const Courses = () => {
 
   return (
     <>
-      <Header />
-      <Sidebar />
-
       <div className={styles.mainContentContainer}>
         <div className={styles.centeredContentBlock}>
           <div className={styles.filterSection}>

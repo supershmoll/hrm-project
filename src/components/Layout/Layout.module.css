@@ -1,0 +1,22 @@
+.mainContentContainer {
+  padding-top: 80px;
+  padding-left: 90px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .mainContentContainer {
+    padding-left: 64px;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContentContainer {
+    padding-left: 0;
+    padding-bottom: 60px;
+  }
+}

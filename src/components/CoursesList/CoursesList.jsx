@@ -1,4 +1,4 @@
-import CourseCard from '../../components/CourseCard/CourseCard';
+import CourseCard from '../CourseCard/CourseCard';
 const CoursesList = ({ courses }) => {
   return (
     <>

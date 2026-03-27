@@ -1,9 +1,11 @@
 import { useState, useMemo } from 'react';
+import { useDebounce } from './useDebounce';
 
 export const useFilteredEmployees = (items) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearch = useDebounce(searchTerm, 300);
+
   const [selectedPosition, setSelectedPosition] = useState('');
-  const [appliedSearch, setAppliedSearch] = useState('');
   const [appliedPosition, setAppliedPosition] = useState('');
 
   const positions = useMemo(() => {
@@ -12,14 +14,12 @@ export const useFilteredEmployees = (items) => {
   }, [items]);
 
   const handleApply = () => {
-    setAppliedSearch(searchTerm);
     setAppliedPosition(selectedPosition);
   };
 
   const handleReset = () => {
     setSearchTerm('');
     setSelectedPosition('');
-    setAppliedSearch('');
     setAppliedPosition('');
   };
 
@@ -27,13 +27,15 @@ export const useFilteredEmployees = (items) => {
     return items.filter((employee) => {
       const matchesSearch = employee.name
         .toLowerCase()
-        .includes(appliedSearch.toLowerCase());
+        .includes(debouncedSearch.toLowerCase());
+
       const matchesPosition = appliedPosition
         ? employee.jobTitle === appliedPosition
         : true;
+
       return matchesSearch && matchesPosition;
     });
-  }, [items, appliedSearch, appliedPosition]);
+  }, [items, debouncedSearch, appliedPosition]);
 
   return {
     searchTerm,

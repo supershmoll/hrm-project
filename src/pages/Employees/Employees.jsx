@@ -5,10 +5,8 @@ import { fetchEmployees } from '../../features/employees/employeesSlice';
 import { useFilteredEmployees } from '../../hooks/useFilteredEmployees';
 import EmployeesFilter from '../../components/EmployeesFilter/EmployeesFilter';
 import EmployeesTable from '../../components/EmployeesTable/EmployeesTable';
-
 import styles from './Employees.module.css';
-import Sidebar from '../../components/Sidebar/Sidebar';
-import Header from '../../components/Header/Header';
+
 const EMPLOYEES_API_URL = 'https://dummyjson.com/c/4890-50ca-45a8-88e7';
 
 const Employees = () => {
@@ -37,25 +35,19 @@ const Employees = () => {
     return <div style={{ color: 'red' }}>Error: {error}</div>;
 
   return (
-    <>
-      <Header />
-      <div className={styles.sidebarWrapper}>
-        <Sidebar />
-        <div className={styles.employeesWrapper}>
-          <EmployeesFilter
-            searchTerm={searchTerm}
-            onSearchChange={setSearchTerm}
-            selectedPosition={selectedPosition}
-            onPositionChange={setSelectedPosition}
-            positions={positions}
-            onApply={handleApply}
-            onReset={handleReset}
-            count={filteredEmployees.length}
-          />
-          <EmployeesTable employees={filteredEmployees} />
-        </div>
-      </div>
-    </>
+    <div className={styles.employeesWrapper}>
+      <EmployeesFilter
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+        selectedPosition={selectedPosition}
+        onPositionChange={setSelectedPosition}
+        positions={positions}
+        onApply={handleApply}
+        onReset={handleReset}
+        count={filteredEmployees.length}
+      />
+      <EmployeesTable employees={filteredEmployees} />
+    </div>
   );
 };
 

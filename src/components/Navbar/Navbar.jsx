@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../features/auth/authSlice';
+import { PATHS } from '../../routes/paths';
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -15,13 +16,13 @@ const Navbar = () => {
     <nav
       style={{ padding: '1rem', background: '#f0f0f0', marginBottom: '2rem' }}
     >
-      <Link to="/" style={{ marginRight: '1rem' }}>
+      <Link to={PATHS.HOME} style={{ marginRight: '1rem' }}>
         Login
       </Link>
-      <Link to="/employees" style={{ marginRight: '1rem' }}>
+      <Link to={PATHS.EMPLOYEES} style={{ marginRight: '1rem' }}>
         Employees
       </Link>
-      <Link to="/courses">Courses</Link>
+      <Link to={PATHS.COURSES}>Courses</Link>
       <button onClick={handleLogout} style={{ marginLeft: 20 }}>
         Logout
       </button>
